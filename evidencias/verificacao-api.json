@@ -1,0 +1,214 @@
+{
+  "verified_at_utc": "2026-10-02T02:28:42.975908+00:00",
+  "base_url": "http://localhost:5206",
+  "sdk": "10.0.300",
+  "framework": "net10.0",
+  "checks_passed": 14,
+  "results": [
+    {
+      "method": "GET",
+      "path": "/weatherforecast",
+      "status": 200,
+      "response": [
+        {
+          "date": "2026-10-02",
+          "temperatureC": 19,
+          "temperatureF": 66,
+          "summary": "Sweltering"
+        },
+        {
+          "date": "2026-10-03",
+          "temperatureC": 32,
+          "temperatureF": 89,
+          "summary": "Hot"
+        },
+        {
+          "date": "2026-10-04",
+          "temperatureC": 9,
+          "temperatureF": 48,
+          "summary": "Chilly"
+        },
+        {
+          "date": "2026-10-05",
+          "temperatureC": -17,
+          "temperatureF": 2,
+          "summary": "Bracing"
+        },
+        {
+          "date": "2026-10-06",
+          "temperatureC": 18,
+          "temperatureF": 64,
+          "summary": "Chilly"
+        }
+      ],
+      "location": null,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/pizza",
+      "status": 200,
+      "response": [
+        {
+          "id": 1,
+          "name": "Classic Italian",
+          "isGlutenFree": false
+        },
+        {
+          "id": 2,
+          "name": "Veggie",
+          "isGlutenFree": true
+        }
+      ],
+      "location": null,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/pizza/1",
+      "status": 200,
+      "response": {
+        "id": 1,
+        "name": "Classic Italian",
+        "isGlutenFree": false
+      },
+      "location": null,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/pizza/99999",
+      "status": 404,
+      "response": {
+        "type": "https://tools.ietf.org/html/rfc9110#section-15.5.5",
+        "title": "Not Found",
+        "status": 404,
+        "traceId": "00-2a3650c95818b2de3a3591d844dc682b-aa90951911958947-00"
+      },
+      "location": null,
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/pizza",
+      "status": 201,
+      "response": {
+        "id": 3,
+        "name": "Hawaii",
+        "isGlutenFree": false
+      },
+      "location": "http://localhost:5206/Pizza/3",
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/pizza/3",
+      "status": 200,
+      "response": {
+        "id": 3,
+        "name": "Hawaii",
+        "isGlutenFree": false
+      },
+      "location": null,
+      "passed": true
+    },
+    {
+      "method": "PUT",
+      "path": "/pizza/3",
+      "status": 204,
+      "response": null,
+      "location": null,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/pizza/3",
+      "status": 200,
+      "response": {
+        "id": 3,
+        "name": "Hawaii sem gluten",
+        "isGlutenFree": true
+      },
+      "location": null,
+      "passed": true
+    },
+    {
+      "method": "PUT",
+      "path": "/pizza/3",
+      "status": 400,
+      "response": {
+        "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+        "title": "Bad Request",
+        "status": 400,
+        "traceId": "00-2d04178efd3d75e8bba54e911ad6fb6d-a70dab23a9848828-00"
+      },
+      "location": null,
+      "passed": true
+    },
+    {
+      "method": "PUT",
+      "path": "/pizza/99999",
+      "status": 404,
+      "response": {
+        "type": "https://tools.ietf.org/html/rfc9110#section-15.5.5",
+        "title": "Not Found",
+        "status": 404,
+        "traceId": "00-20be8fa9b52d3f6dee0c150ff5bd53ea-ab8761001f77408e-00"
+      },
+      "location": null,
+      "passed": true
+    },
+    {
+      "method": "DELETE",
+      "path": "/pizza/3",
+      "status": 204,
+      "response": null,
+      "location": null,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/pizza/3",
+      "status": 404,
+      "response": {
+        "type": "https://tools.ietf.org/html/rfc9110#section-15.5.5",
+        "title": "Not Found",
+        "status": 404,
+        "traceId": "00-58cf8f9793cb5717ce89359f67bf8336-bb43ae03d9d57570-00"
+      },
+      "location": null,
+      "passed": true
+    },
+    {
+      "method": "DELETE",
+      "path": "/pizza/3",
+      "status": 404,
+      "response": {
+        "type": "https://tools.ietf.org/html/rfc9110#section-15.5.5",
+        "title": "Not Found",
+        "status": 404,
+        "traceId": "00-7d2ef5119a8b28c4d0b5f3ae7d8662da-2fc3eabe42abd6e6-00"
+      },
+      "location": null,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/pizza/abc",
+      "status": 400,
+      "response": {
+        "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+        "title": "One or more validation errors occurred.",
+        "status": 400,
+        "errors": {
+          "id": [
+            "The value 'abc' is not valid."
+          ]
+        },
+        "traceId": "00-c426c4bd788dbc7d0fd0924f06475206-e5ee09ed6d476c0d-00"
+      },
+      "location": null,
+      "passed": true
+    }
+  ]
+}
