@@ -1,0 +1,76 @@
+@ContosoPizza_HostAddress = http://localhost:5206
+
+GET {{ContosoPizza_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+# Listar pizzas
+GET {{ContosoPizza_HostAddress}}/pizza
+Accept: application/json
+
+###
+
+# Consultar uma pizza existente
+GET {{ContosoPizza_HostAddress}}/pizza/1
+Accept: application/json
+
+###
+
+# Consultar uma pizza inexistente: 404
+GET {{ContosoPizza_HostAddress}}/pizza/99999
+Accept: application/json
+
+###
+
+# Criar uma pizza: 201 e cabeçalho Location
+# Use o ID retornado no lugar de 3 nas próximas requisições.
+POST {{ContosoPizza_HostAddress}}/pizza
+Content-Type: application/json
+
+{
+  "name": "Hawaii",
+  "isGlutenFree": false
+}
+
+###
+
+GET {{ContosoPizza_HostAddress}}/pizza/3
+Accept: application/json
+
+###
+
+# Atualizar: 204
+PUT {{ContosoPizza_HostAddress}}/pizza/3
+Content-Type: application/json
+
+{
+  "id": 3,
+  "name": "Hawaii sem gluten",
+  "isGlutenFree": true
+}
+
+###
+
+# ID do corpo diferente do ID da URL: 400
+PUT {{ContosoPizza_HostAddress}}/pizza/3
+Content-Type: application/json
+
+{
+  "id": 4,
+  "name": "ID divergente",
+  "isGlutenFree": false
+}
+
+###
+
+# Excluir: 204
+DELETE {{ContosoPizza_HostAddress}}/pizza/3
+
+###
+
+# Confirmar exclusão: 404
+GET {{ContosoPizza_HostAddress}}/pizza/3
+
+###
+
